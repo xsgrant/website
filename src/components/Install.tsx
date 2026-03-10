@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function Install() {
   const [copied, setCopied] = useState(false);
-  const installCode = `curl -O https://github.com/xsgrant/releases/blob/main/docker-compose.yml\ndocker compose up -d`;
+  const installCode = `curl -O https://raw.githubusercontent.com/xsgrant/releases/refs/heads/main/docker-compose.yml\ndocker compose up -d`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(installCode);
@@ -24,7 +24,12 @@ export function Install() {
               Experience the full feature set in 5 minutes.
             </p>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              See for yourself how <span className="font-semibold text-slate-800">xsGrant</span> transforms privileged access. Watch a quick product walkthrough, or spin up a local instance using Docker Compose to explore request workflows, break-glass emergencies, and audit logs hands-on.
+              See for yourself how{" "}
+              <span className="font-semibold text-slate-800">xsGrant</span>{" "}
+              transforms privileged access. Watch a quick product walkthrough,
+              or spin up a local instance using Docker Compose to explore
+              request workflows, break-glass emergencies, and audit logs
+              hands-on.
             </p>
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-4 text-slate-700 font-medium">
@@ -110,15 +115,19 @@ export function Install() {
                   <code className="block mb-4">
                     <span className="font-bold text-slate-900">curl</span>{" "}
                     <span className="text-slate-500">-O</span>{" "}
-                    <span className="text-accent-500">https://github.com/xsgrant/releases/blob/main/docker-compose.yml</span>
+                    <span className="text-accent-500">
+                      https://raw.githubusercontent.com/xsgrant/releases/refs/heads/main/docker-compose.yml
+                    </span>
                   </code>
                   <code className="block mb-2">
                     <span className="text-slate-400">#</span>{" "}
-                    <span className="text-slate-500">Start xsGrant locally</span>
+                    <span className="text-slate-500">
+                      Start xsGrant locally
+                    </span>
                   </code>
                   <code className="block">
-                    <span className="font-bold text-slate-900">docker</span> compose
-                    up -d
+                    <span className="font-bold text-slate-900">docker</span>{" "}
+                    compose up -d
                   </code>
                 </pre>
               </div>
