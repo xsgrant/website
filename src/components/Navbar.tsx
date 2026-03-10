@@ -1,18 +1,35 @@
-import { useState } from 'react';
+import { useState, type MouseEvent } from 'react';
 import { Menu, X, Github } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
+  const handleHomeClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+
+    if (window.location.pathname !== '/') {
+      window.history.pushState({}, '', '/');
+      window.dispatchEvent(new PopStateEvent('popstate'));
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsOpen(false);
+  };
+
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 border-b border-slate-200/80 bg-white/82 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex justify-center items-center h-16">
-          <div className="absolute left-0 flex items-center gap-2">
+          <a
+            href="/"
+            onClick={handleHomeClick}
+            className="absolute left-0 flex items-center gap-2"
+            aria-label="Go to xsGrant homepage"
+          >
             <img src="/logos/shield-key.svg" alt="xsGrant Logo" className="h-8 w-8" />
             <span className="text-xl font-extrabold tracking-tight text-slate-950">xsGrant</span>
-          </div>
+          </a>
           
           <div className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-sm font-medium text-slate-600 transition-colors hover:text-accent-500">Features</a>
