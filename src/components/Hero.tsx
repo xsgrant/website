@@ -51,7 +51,7 @@ export function Hero() {
           </h1>
           
           <p className="mx-auto mt-6 max-w-3xl text-lg leading-relaxed text-slate-600 md:text-xl">
-            Replace permanent privileged access with temporary, reviewable, and business-justified workflows. <span className="font-semibold text-slate-800">xsGrant</span> sits right on top of your existing IDM.
+            Replace permanent privileges with secure, on-demand access workflows. <span className="font-semibold text-slate-800">xsGrant</span> sits right on top of your existing IDM.
           </p>
 
           <div className="mt-10 flex flex-col justify-center gap-4 sm:flex-row">
