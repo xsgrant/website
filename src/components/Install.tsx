@@ -48,7 +48,7 @@ export function Install() {
                 <div className="flex-shrink-0 w-8 h-8 rounded-xl bg-accent-50 border border-accent-100 flex items-center justify-center text-accent-500 font-bold shadow-sm">
                   3
                 </div>
-                <span>Test workflows via localhost:3000</span>
+                <span>Test workflows via localhost:8000</span>
               </div>
             </div>
           </div>

@@ -1,5 +1,4 @@
 import { Clock, ShieldAlert, UserCheck, Key, FileText, Lock } from 'lucide-react';
-import { motion } from 'framer-motion';
 
 const features = [
   {
@@ -49,13 +48,9 @@ export function Features() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-          {features.map((feature, index) => (
-            <motion.div
+          {features.map((feature) => (
+            <div
               key={feature.name}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
               className="group relative rounded-2xl border border-slate-200/90 bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:border-accent-200 hover:shadow-lg hover:shadow-accent-100/50"
             >
               <div className="relative z-10 flex items-center gap-4 mb-4">
@@ -65,7 +60,7 @@ export function Features() {
                 <h3 className="text-xl font-bold text-slate-950">{feature.name}</h3>
               </div>
               <p className="relative z-10 leading-relaxed text-slate-600">{feature.description}</p>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>
