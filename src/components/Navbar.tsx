@@ -1,5 +1,5 @@
 import { useState, type MouseEvent } from 'react';
-import { Menu, X, Github } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export function Navbar() {
@@ -38,16 +38,6 @@ export function Navbar() {
           </div>
 
           <div className="absolute right-0 flex items-center gap-4">
-            <a
-              href="https://github.com/xsgrant/releases"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden md:flex items-center justify-center text-slate-500 hover:text-slate-900 transition-colors"
-              aria-label="GitHub Repository"
-            >
-              <Github className="h-5 w-5" />
-            </a>
-            
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-slate-900 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent-500"
@@ -94,16 +84,6 @@ export function Navbar() {
                 className="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
               >
                 Pricing
-              </a>
-              <a
-                href="https://github.com/xsgrant/releases"
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-2 px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
-              >
-                <Github className="h-5 w-5" />
-                GitHub
               </a>
             </div>
           </motion.div>

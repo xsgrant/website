@@ -3,33 +3,39 @@ import { motion } from 'framer-motion';
 
 const tiers = [
   {
-    name: 'Starter',
+    name: 'Free',
     price: '€0',
     frequency: 'Forever',
-    description: 'Perfect for testing and small organizations.',
-    users: 'Up to 5 users',
-    buttonText: 'Run Locally',
+    description: 'Perfect for testing and small organisations.',
+    users: 'Up to 10 users',
+    support: 'No support',
+    buttonText: 'See How It Works',
     buttonLink: '#install',
+    buttonDisabled: false,
     popular: false,
   },
   {
     name: 'Growth',
-    pricePending: true,
-    frequencyLabel: 'per year',
+    price: '€500',
+    frequency: '/ year',
     description: 'For growing organizations requiring structured access.',
-    users: 'Up to 50 users',
-    buttonText: 'Subscribe Now',
+    users: 'With a maximum of 50 users',
+    support: 'Support included',
+    buttonText: 'Available Soon',
     buttonLink: '#', // Stripe link goes here later
+    buttonDisabled: true,
     popular: true,
   },
   {
     name: 'Scale',
-    pricePending: true,
-    frequencyLabel: 'per person / year',
-    description: 'For larger organizations with robust IAM needs.',
-    users: '50+ users',
-    buttonText: 'Subscribe Now',
+    price: '€5,50',
+    frequency: 'per user / year',
+    description: 'For larger organizations with robust PAM needs.',
+    users: 'Minimum order size of 100 users',
+    support: 'Support included',
+    buttonText: 'Available Soon',
     buttonLink: '#', // Stripe link goes here later
+    buttonDisabled: true,
     popular: false,
   },
 ];
@@ -75,45 +81,47 @@ export function Pricing() {
                 <p className="text-slate-500 text-sm h-10">{tier.description}</p>
               </div>
               
-              {tier.pricePending ? (
-                <div className="mb-6">
-                  <div className="flex items-baseline gap-2" aria-label="Pricing coming soon">
-                    <span
-                      className="text-5xl font-extrabold tracking-[0.28em] text-slate-300 select-none"
-                      aria-hidden="true"
-                    >
-                      •••
-                    </span>
-                    <span className="text-lg font-medium text-slate-500">{tier.frequencyLabel}</span>
-                  </div>
-                  <p className="mt-2 text-sm font-medium text-slate-500">Pricing coming soon</p>
-                </div>
-              ) : (
-                <div className="mb-6 flex items-baseline text-slate-950">
-                  <span className="text-5xl font-extrabold tracking-tight">{tier.price}</span>
-                  <span className="ml-1 text-lg font-medium text-slate-500">{tier.frequency}</span>
-                </div>
-              )}
+              <div className="mb-6 flex items-baseline text-slate-950">
+                <span className="text-5xl font-extrabold tracking-tight">{tier.price}</span>
+                <span className="ml-1 text-lg font-medium text-slate-500">{tier.frequency}</span>
+              </div>
               
               <ul className="flex-1 space-y-4 mb-8">
                 <li className="flex gap-3 items-center">
                   <CheckCircle2 className="h-5 w-5 text-accent-500 flex-shrink-0" />
                   <span className="text-slate-700 font-medium">{tier.users}</span>
                 </li>
+                <li className="flex gap-3 items-center">
+                  <CheckCircle2 className="h-5 w-5 text-accent-500 flex-shrink-0" />
+                  <span className="text-slate-700 font-medium">{tier.support}</span>
+                </li>
               </ul>
               
-              <button
-                type="button"
-                disabled
-                aria-disabled="true"
-                className={`block w-full py-3.5 px-4 rounded-xl text-center font-medium transition-all cursor-not-allowed opacity-70 ${
-                  tier.popular
-                    ? 'bg-slate-950 text-white shadow-md'
-                    : 'bg-slate-50 text-slate-700 border border-slate-200'
-                }`}
-              >
-                {tier.buttonText}
-              </button>
+              {tier.buttonDisabled ? (
+                <button
+                  type="button"
+                  disabled
+                  aria-disabled="true"
+                  className={`block w-full py-3.5 px-4 rounded-xl text-center font-medium transition-all cursor-not-allowed opacity-70 ${
+                    tier.popular
+                      ? 'bg-slate-950 text-white shadow-md'
+                      : 'bg-slate-50 text-slate-700 border border-slate-200'
+                  }`}
+                >
+                  {tier.buttonText}
+                </button>
+              ) : (
+                <a
+                  href={tier.buttonLink}
+                  className={`block w-full py-3.5 px-4 rounded-xl text-center font-medium transition-all ${
+                    tier.popular
+                      ? 'bg-slate-950 text-white shadow-md hover:bg-slate-800'
+                      : 'bg-slate-50 text-slate-700 border border-slate-200 hover:border-slate-300 hover:bg-white'
+                  }`}
+                >
+                  {tier.buttonText}
+                </a>
+              )}
             </motion.div>
           ))}
         </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { TrustSection } from './components/TrustSection';
 import { Features } from './components/Features';
 import { Install } from './components/Install';
 import { Pricing } from './components/Pricing';
@@ -37,6 +38,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <TrustSection />
         <Features />
         <Install />
         <Pricing />
