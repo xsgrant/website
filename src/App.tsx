@@ -11,6 +11,16 @@ import { TermsPage } from './components/TermsPage';
 function App() {
   const [pathname, setPathname] = useState(window.location.pathname);
 
+  const scrollToSection = (sectionId: string) => {
+    window.requestAnimationFrame(() => {
+      const target = document.getElementById(sectionId);
+
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  };
+
   useEffect(() => {
     const handlePopState = () => {
       setPathname(window.location.pathname);
@@ -22,28 +32,51 @@ function App() {
     };
   }, []);
 
-  const navigateTo = (nextPath: string) => {
+  const navigateTo = (nextPath: string, scrollToTop = false) => {
     if (window.location.pathname !== nextPath) {
       window.history.pushState({}, '', nextPath);
       setPathname(nextPath);
+
+      if (scrollToTop) {
+        window.requestAnimationFrame(() => {
+          window.scrollTo({ top: 0, behavior: 'auto' });
+        });
+      }
     }
   };
 
-  if (pathname === '/terms') {
-    return <TermsPage onBackHome={() => navigateTo('/')} />;
-  }
+  const navigateToSection = (sectionId: string) => {
+    if (window.location.pathname !== '/') {
+      window.history.pushState({}, '', `/#${sectionId}`);
+      setPathname('/');
+      scrollToSection(sectionId);
+      return;
+    }
+
+    window.history.replaceState({}, '', `/#${sectionId}`);
+    scrollToSection(sectionId);
+  };
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-gray-200 selection:text-black">
-      <Navbar />
+      <Navbar
+        onNavigateHome={() => navigateTo('/')}
+        onNavigateSection={navigateToSection}
+      />
       <main>
-        <Hero />
-        <TrustSection />
-        <Features />
-        <Install />
-        <Pricing />
+        {pathname === '/terms' ? (
+          <TermsPage onNavigateHome={() => navigateTo('/')} onNavigateSection={navigateToSection} />
+        ) : (
+          <>
+            <Hero />
+            <TrustSection />
+            <Features />
+            <Install />
+            <Pricing />
+          </>
+        )}
       </main>
-      <Footer onTermsClick={() => navigateTo('/terms')} />
+      <Footer pathname={pathname} onHomeClick={() => navigateTo('/')} onTermsClick={() => navigateTo('/terms', true)} />
     </div>
   );
 }

@@ -1,8 +1,12 @@
 type FooterProps = {
+  pathname: string;
+  onHomeClick?: () => void;
   onTermsClick?: () => void;
 };
 
-export function Footer({ onTermsClick }: FooterProps) {
+export function Footer({ pathname, onHomeClick, onTermsClick }: FooterProps) {
+  const isTermsPage = pathname === '/terms';
+
   return (
     <footer className="bg-white border-t border-gray-200 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -13,17 +17,31 @@ export function Footer({ onTermsClick }: FooterProps) {
           </div>
           
           <div className="flex gap-8 text-sm text-gray-500">
+            <a
+              href="/"
+              onClick={(event) => {
+                if (!onHomeClick) {
+                  return;
+                }
+                event.preventDefault();
+                onHomeClick();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }}
+              className="hover:text-black transition-colors"
+            >
+              Home
+            </a>
             <a href="https://github.com/xsgrant/releases" className="hover:text-black transition-colors">GitHub</a>
             <a
               href="/terms"
               onClick={(event) => {
-                if (!onTermsClick) {
+                if (!onTermsClick || isTermsPage) {
                   return;
                 }
                 event.preventDefault();
                 onTermsClick();
               }}
-              className="hover:text-black transition-colors"
+              className={`transition-colors ${isTermsPage ? 'text-black' : 'hover:text-black'}`}
             >
               Terms
             </a>

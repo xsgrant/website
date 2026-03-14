@@ -1,14 +1,15 @@
 type TermsPageProps = {
-  onBackHome: () => void;
+  onNavigateHome: () => void;
+  onNavigateSection: (sectionId: string) => void;
 };
 
-type Section = {
+type LegalSection = {
   title: string;
   paragraphs?: string[];
   bullets?: string[];
 };
 
-const sections: Section[] = [
+const sections: LegalSection[] = [
   {
     title: '1. Definitions',
     paragraphs: ['For the purposes of this Agreement:'],
@@ -97,9 +98,7 @@ const sections: Section[] = [
   },
   {
     title: '11. Limitation of Liability',
-    paragraphs: [
-      'To the maximum extent permitted by applicable law, Licensor shall not be liable for:',
-    ],
+    paragraphs: ['To the maximum extent permitted by applicable law, Licensor shall not be liable for:'],
     bullets: [
       'indirect damages',
       'incidental damages',
@@ -151,32 +150,58 @@ function renderInlineBold(text: string) {
   });
 }
 
-export function TermsPage({ onBackHome }: TermsPageProps) {
+export function TermsPage({ onNavigateHome, onNavigateSection }: TermsPageProps) {
   return (
-    <main className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(38,71,154,0.12),_transparent_32%),linear-gradient(180deg,_#f8fbff_0%,_#ffffff_30%,_#f3f6fb_100%)] px-4 py-8 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-5xl">
-        <a
-          href="/"
-          onClick={(event) => {
-            event.preventDefault();
-            onBackHome();
-          }}
-          className="inline-flex items-center gap-2 rounded-full border border-slate-200/80 bg-white/80 px-4 py-2 text-sm font-medium text-slate-700 shadow-sm backdrop-blur transition hover:border-slate-300 hover:text-slate-950"
-        >
-          <span aria-hidden="true">&larr;</span>
-          <span>Back to xsGrant</span>
-        </a>
+    <div className="relative overflow-hidden px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pt-32">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-[26rem] bg-[radial-gradient(circle_at_top,_rgba(38,71,154,0.18),_transparent_58%)]"
+      />
 
-        <section className="mt-6 overflow-hidden rounded-[2rem] border border-slate-200/70 bg-white/90 shadow-[0_24px_80px_-32px_rgba(15,23,42,0.28)] backdrop-blur-sm">
+      <div className="relative mx-auto max-w-6xl">
+        <div className="mx-auto max-w-5xl overflow-hidden rounded-[2rem] border border-slate-200/70 bg-white/90 shadow-[0_24px_80px_-32px_rgba(15,23,42,0.28)] backdrop-blur-sm">
           <div className="border-b border-slate-200/70 bg-[linear-gradient(135deg,rgba(15,23,42,0.98),rgba(38,71,154,0.94))] px-6 py-10 text-white sm:px-10 sm:py-14">
             <div className="max-w-3xl">
-              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-100/90">Legal</p>
+              <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-100/90">Legal &amp; Licensing</p>
               <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">End-User License Agreement</h1>
               <p className="mt-4 text-lg leading-8 text-slate-200">
-                This page sets out the license terms for xsGrant. By downloading, installing, accessing, deploying,
-                copying, or using xsGrant, Licensee acknowledges that it has read, understood, and agrees to be bound
-                by this Agreement.
+                The same straightforward approach behind xsGrant carries into the legal terms: clear scope, one
+                production deployment, and transparent self-hosting responsibilities.
               </p>
+            </div>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+              <a
+                href="/"
+                onClick={(event) => {
+                  event.preventDefault();
+                  onNavigateHome();
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }}
+                className="inline-flex items-center justify-center rounded-xl bg-white px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-slate-100"
+              >
+                Back to Homepage
+              </a>
+              <a
+                href="/#pricing"
+                onClick={(event) => {
+                  event.preventDefault();
+                  onNavigateSection('pricing');
+                }}
+                className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/15"
+              >
+                View Pricing
+              </a>
+              <a
+                href="/#install"
+                onClick={(event) => {
+                  event.preventDefault();
+                  onNavigateSection('install');
+                }}
+                className="inline-flex items-center justify-center rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/15"
+              >
+                See How It Works
+              </a>
             </div>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
@@ -196,77 +221,94 @@ export function TermsPage({ onBackHome }: TermsPageProps) {
           </div>
 
           <div className="px-6 py-8 sm:px-10 sm:py-10">
-            <div className="rounded-3xl border border-slate-200 bg-slate-50/80 px-6 py-6 text-slate-700 shadow-sm">
-              <p className="text-sm font-medium uppercase tracking-[0.24em] text-slate-500">Copyright Notice</p>
-              <p className="mt-3 text-base leading-7">Copyright &copy; [Year] iJam IT Solutions. All rights reserved.</p>
-              <p className="mt-4 text-base leading-7">
-                This End-User License Agreement ("Agreement") is a legal agreement between{' '}
-                <strong>iJam IT Solutions</strong> ("Licensor") and the individual or legal entity installing,
-                accessing, deploying, or using <strong>xsGrant</strong> ("Licensee").
-              </p>
-              <p className="mt-4 text-base leading-7">
-                If Licensee does not agree to these terms, Licensee must not install or use xsGrant.
-              </p>
+            <div className="grid gap-4 lg:grid-cols-[1.35fr_0.65fr]">
+              <div className="rounded-3xl border border-slate-200 bg-slate-50/80 px-6 py-6 text-slate-700 shadow-sm">
+                <p className="text-sm font-medium uppercase tracking-[0.24em] text-slate-500">Copyright Notice</p>
+                <p className="mt-3 text-base leading-7">Copyright &copy; [Year] iJam IT Solutions. All rights reserved.</p>
+                <p className="mt-4 text-base leading-7">
+                  This End-User License Agreement ("Agreement") is a legal agreement between{' '}
+                  <strong>iJam IT Solutions</strong> ("Licensor") and the individual or legal entity installing,
+                  accessing, deploying, or using <strong>xsGrant</strong> ("Licensee").
+                </p>
+                <p className="mt-4 text-base leading-7">
+                  If Licensee does not agree to these terms, Licensee must not install or use xsGrant.
+                </p>
+              </div>
+
+              <div className="rounded-3xl border border-accent-100 bg-accent-50/70 px-6 py-6 text-slate-700 shadow-sm">
+                <p className="text-sm font-medium uppercase tracking-[0.24em] text-accent-500">At a glance</p>
+                <div className="mt-4 space-y-4 text-sm leading-7 sm:text-base">
+                  <p>
+                    <strong>Deployment:</strong> one production instance per license.
+                  </p>
+                  <p>
+                    <strong>Use case:</strong> internal use only unless separately authorized.
+                  </p>
+                  <p>
+                    <strong>Hosting:</strong> you operate and secure your own environment.
+                  </p>
+                </div>
+              </div>
             </div>
 
             <div className="mt-8 space-y-6">
-              {sections.map((section) => (
-                <section key={section.title} className="rounded-3xl border border-slate-200/80 bg-white px-6 py-6 shadow-sm sm:px-8">
-                  <h2 className="text-2xl font-bold tracking-tight text-slate-950">{section.title}</h2>
+              {sections.map((legalSection) => (
+                <div key={legalSection.title} className="rounded-3xl border border-slate-200/80 bg-white px-6 py-6 shadow-sm sm:px-8">
+                  <h2 className="text-2xl font-bold tracking-tight text-slate-950">{legalSection.title}</h2>
 
-                  {section.paragraphs?.map((paragraph) => (
+                  {legalSection.paragraphs?.map((paragraph) => (
                     <p key={paragraph} className="mt-4 text-base leading-8 text-slate-700">
                       {renderInlineBold(paragraph)}
                     </p>
                   ))}
 
-                  {section.title === '7. Updates and Maintenance' && (
+                  {legalSection.title === '7. Updates and Maintenance' && (
                     <p className="mt-4 text-base leading-8 text-slate-700">
                       Functional enhancements, feature upgrades, or major releases may be offered separately and may
                       require additional licensing terms or fees.
                     </p>
                   )}
 
-                  {section.title === '7. Updates and Maintenance' && (
+                  {legalSection.title === '7. Updates and Maintenance' && (
                     <p className="mt-4 text-base leading-8 text-slate-700">
                       Licensor is under no obligation to provide updates beyond those expressly offered.
                     </p>
                   )}
 
-                  {section.title === '6. Ownership and Intellectual Property' && (
+                  {legalSection.title === '6. Ownership and Intellectual Property' && (
                     <p className="mt-4 text-base leading-8 text-slate-700">No ownership rights are transferred under this Agreement.</p>
                   )}
 
-                  {section.title === '8. Self-Hosted Environment Responsibility' && (
+                  {legalSection.title === '8. Self-Hosted Environment Responsibility' && (
                     <p className="mt-4 text-base leading-8 text-slate-700">
                       Licensor is not responsible for failures, losses, or vulnerabilities arising from Licensee&apos;s
                       infrastructure or configuration.
                     </p>
                   )}
 
-                  {section.title === '10. Disclaimer of Warranty' && (
+                  {legalSection.title === '10. Disclaimer of Warranty' && (
                     <p className="mt-4 text-base leading-8 text-slate-700">
                       Licensor does not warrant that xsGrant will meet Licensee&apos;s requirements or operate without
                       interruption.
                     </p>
                   )}
 
-                  {section.title === '11. Limitation of Liability' && (
+                  {legalSection.title === '11. Limitation of Liability' && (
                     <p className="mt-4 text-base leading-8 text-slate-700">
                       Licensor&apos;s total aggregate liability under this Agreement shall not exceed the amount paid by
                       Licensee for xsGrant during the twelve (12) months preceding the event giving rise to liability.
                     </p>
                   )}
 
-                  {section.title === '12. Termination' && (
+                  {legalSection.title === '12. Termination' && (
                     <p className="mt-4 text-base leading-8 text-slate-700">
                       Termination does not limit Licensor&apos;s right to pursue legal remedies.
                     </p>
                   )}
 
-                  {section.bullets && (
+                  {legalSection.bullets && (
                     <ul className="mt-4 space-y-2 text-slate-700">
-                      {section.bullets.map((bullet) => (
+                      {legalSection.bullets.map((bullet) => (
                         <li key={bullet} className="flex gap-3 leading-8">
                           <span className="mt-3 h-2 w-2 flex-none rounded-full bg-accent-500" />
                           <span>{renderInlineBold(bullet)}</span>
@@ -274,7 +316,7 @@ export function TermsPage({ onBackHome }: TermsPageProps) {
                       ))}
                     </ul>
                   )}
-                </section>
+                </div>
               ))}
             </div>
 
@@ -285,8 +327,8 @@ export function TermsPage({ onBackHome }: TermsPageProps) {
               <p className="text-base leading-7">[Insert Country]</p>
             </footer>
           </div>
-        </section>
+        </div>
       </div>
-    </main>
+    </div>
   );
 }

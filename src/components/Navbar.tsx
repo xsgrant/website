@@ -2,18 +2,24 @@ import { useState, type MouseEvent } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-export function Navbar() {
+type NavbarProps = {
+  onNavigateHome: () => void;
+  onNavigateSection: (sectionId: string) => void;
+};
+
+export function Navbar({ onNavigateHome, onNavigateSection }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleHomeClick = (event: MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
-
-    if (window.location.pathname !== '/') {
-      window.history.pushState({}, '', '/');
-      window.dispatchEvent(new PopStateEvent('popstate'));
-    }
-
+    onNavigateHome();
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    setIsOpen(false);
+  };
+
+  const handleSectionClick = (event: MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    event.preventDefault();
+    onNavigateSection(sectionId);
     setIsOpen(false);
   };
 
@@ -32,9 +38,9 @@ export function Navbar() {
           </a>
           
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-sm font-medium text-slate-600 transition-colors hover:text-accent-500">Features</a>
-            <a href="#install" className="text-sm font-medium text-slate-600 transition-colors hover:text-accent-500">How it Works</a>
-            <a href="#pricing" className="text-sm font-medium text-slate-600 transition-colors hover:text-accent-500">Pricing</a>
+            <a href="/#features" onClick={(event) => handleSectionClick(event, 'features')} className="text-sm font-medium text-slate-600 transition-colors hover:text-accent-500">Features</a>
+            <a href="/#install" onClick={(event) => handleSectionClick(event, 'install')} className="text-sm font-medium text-slate-600 transition-colors hover:text-accent-500">How it Works</a>
+            <a href="/#pricing" onClick={(event) => handleSectionClick(event, 'pricing')} className="text-sm font-medium text-slate-600 transition-colors hover:text-accent-500">Pricing</a>
           </div>
 
           <div className="absolute right-0 flex items-center gap-4">
@@ -65,22 +71,22 @@ export function Navbar() {
           >
             <div className="px-4 pt-2 pb-6 space-y-1">
               <a
-                href="#features"
-                onClick={() => setIsOpen(false)}
+                href="/#features"
+                onClick={(event) => handleSectionClick(event, 'features')}
                 className="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
               >
                 Features
               </a>
               <a
-                href="#install"
-                onClick={() => setIsOpen(false)}
+                href="/#install"
+                onClick={(event) => handleSectionClick(event, 'install')}
                 className="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
               >
                 How it Works
               </a>
               <a
-                href="#pricing"
-                onClick={() => setIsOpen(false)}
+                href="/#pricing"
+                onClick={(event) => handleSectionClick(event, 'pricing')}
                 className="block px-3 py-3 rounded-md text-base font-medium text-slate-700 hover:text-slate-900 hover:bg-slate-50"
               >
                 Pricing
