@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export function Install() {
   const [copied, setCopied] = useState(false);
-  const installCode = `curl -O https://raw.githubusercontent.com/xsgrant/releases/refs/heads/main/docker-compose.yml\ndocker compose up -d`;
+  const installCode = `curl -O https://raw.githubusercontent.com/xsgrant/releases/refs/heads/main/docker-compose.yml\ndocker compose up -d --pull always`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(installCode);
@@ -127,7 +127,7 @@ export function Install() {
                   </code>
                   <code className="block">
                     <span className="font-bold text-slate-900">docker</span>{" "}
-                    compose up -d
+                    compose up -d --pull always
                   </code>
                 </pre>
               </div>
