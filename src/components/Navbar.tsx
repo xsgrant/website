@@ -33,7 +33,7 @@ export function Navbar({ onNavigateHome, onNavigateSection }: NavbarProps) {
             className="absolute left-0 flex items-center gap-2"
             aria-label="Go to xsGrant homepage"
           >
-            <img src="/logos/shield-key.svg" alt="xsGrant Logo" className="h-8 w-8" />
+            <img src="/logos/xsgrant.jpeg" alt="xsGrant logo" className="h-8 w-8 rounded-md object-cover" />
             <span className="text-xl font-extrabold tracking-tight text-slate-950">xsGrant</span>
           </a>
           
