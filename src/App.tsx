@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { TrustSection } from './components/TrustSection';
@@ -77,6 +78,7 @@ function App() {
         )}
       </main>
       <Footer pathname={pathname} onHomeClick={() => navigateTo('/')} onTermsClick={() => navigateTo('/terms', true)} />
+      <Analytics />
     </div>
   );
 }
