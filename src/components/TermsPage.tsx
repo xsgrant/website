@@ -14,16 +14,21 @@ const sections: LegalSection[] = [
     title: '1. Definitions',
     paragraphs: ['For the purposes of this Agreement:'],
     bullets: [
-      '**xsGrant** means the software product known as xsGrant, including source code made available for inspection, object code, documentation, updates, patches, and related materials supplied by Licensor.',
-      '**Production Instance** means one operational deployment of xsGrant used in a live environment for Licensee\'s internal purposes.',
-      '**Source Code** means human-readable software code provided by Licensor solely for inspection under this Agreement.',
+      '**xsGrant** means the software product known as xsGrant, including object code, documentation, updates, patches, and related materials supplied by Licensor.',
+      '**Commercial License** means the internal-use license granted under this Agreement for use of xsGrant in organizational environments.',
+      '**Production Instance** means an operational deployment of xsGrant used in a live environment for Licensee\'s internal purposes.',
+      '**Source Code** means human-readable software code that Licensor may make available under a separate license, including the PolyForm Noncommercial License **1.0.0** where applicable.',
     ],
   },
   {
     title: '2. License Grant',
     paragraphs: [
-      'Subject to full compliance with this Agreement, Licensor grants Licensee a limited, non-exclusive, non-transferable, non-sublicensable, revocable license to install and use xsGrant solely for Licensee\'s own internal purposes.',
-      'This license permits deployment of **one (1) production instance** of xsGrant on infrastructure controlled by Licensee.',
+      'Subject to full compliance with this Agreement, Licensor grants Licensee a limited, non-exclusive, non-transferable, non-sublicensable, revocable Commercial License to install and use xsGrant solely for Licensee\'s own internal purposes.',
+      'Organizations with fewer than **ten (10)** users with access to xsGrant may use xsGrant free of charge on an unsupported basis.',
+      'Organizations with more than **ten (10)** users with access to xsGrant must obtain a paid license and receive next business day support.',
+      'A paid license covers **one (1)** organization and the number of users within that organization who have access to xsGrant, and may be used for Production and all non-production environments, including Dev, TST, and ACC.',
+      'Licensee may run xsGrant in as many instances as Licensee requires, provided that the total number of users with access to xsGrant does not exceed the number of users covered by the applicable license.',
+      'Each license may be used with only **one (1)** IDM solution. If Licensee uses multiple IDM solutions, Licensee must purchase an additional license and run a separate xsGrant instance for each additional IDM solution.',
       'xsGrant is licensed, not sold.',
       'No rights are granted except those expressly stated in this Agreement.',
     ],
@@ -31,23 +36,24 @@ const sections: LegalSection[] = [
   {
     title: '3. Source-Available Access',
     paragraphs: [
-      'Licensor may provide access to xsGrant source code solely for Licensee\'s internal inspection, security review, and technical understanding in connection with authorized use of xsGrant.',
-      'Source code access does not grant Licensee any right to:',
+      'Licensor may make Source Code available under a separate license, including the PolyForm Noncommercial License **1.0.0**, for the specific source code copies distributed with that license.',
+      'Any rights to use, copy, modify, create derivative works from, or distribute those Source Code copies are governed by that separate source code license and not by this Agreement.',
+      'This Agreement governs Commercial License rights for deployment, support, user limits, and paid use of xsGrant.',
+      'If there is any conflict between this Agreement and the license accompanying a particular Source Code copy, the license accompanying that Source Code copy controls for that Source Code copy.',
     ],
-    bullets: ['modify', 'adapt', 'alter', 'translate', 'create derivative works', 'redistribute', 'sublicense', 'publish', 'commercially exploit'],
   },
   {
     title: '4. Restrictions',
     paragraphs: ['Licensee shall not:'],
     bullets: [
-      'modify, adapt, alter, translate, or create derivative works of xsGrant or its source code',
-      'distribute, sublicense, lease, rent, sell, assign, or otherwise transfer xsGrant',
+      'use xsGrant in excess of the number of users covered by the applicable license',
+      'use **one (1)** license for more than **one (1)** IDM solution',
       'provide xsGrant as a hosted service, managed service, or software-as-a-service offering to third parties',
-      'deploy more than one production instance without prior written authorization from Licensor',
       'use xsGrant on behalf of third parties',
+      'transfer, sublicense, resell, or assign the Commercial License except as expressly authorized in writing by Licensor',
       'remove, alter, or obscure proprietary notices, copyright notices, trademarks, or license identifiers',
       'reverse engineer, decompile, or disassemble xsGrant except where mandatory law expressly permits',
-      'use knowledge obtained from inspection of xsGrant source code to develop, commission, or assist in developing software substantially similar to xsGrant or competing software',
+      'exercise any commercial rights beyond the scope of this Agreement or any separate license granted by Licensor',
     ],
   },
   {
@@ -59,17 +65,21 @@ const sections: LegalSection[] = [
   },
   {
     title: '6. Ownership and Intellectual Property',
-    paragraphs: ['All rights, title, and interest in xsGrant remain exclusively vested in Licensor.', 'This includes all rights relating to:'],
+    paragraphs: [
+      'All rights, title, and interest in xsGrant remain exclusively vested in Licensor, subject only to the licenses expressly granted under this Agreement or under any separate license accompanying Source Code.',
+      'This includes all rights relating to:',
+    ],
     bullets: ['source code', 'object code', 'architecture', 'design', 'documentation', 'trademarks', 'know-how', 'copyrights', 'trade secrets'],
   },
   {
     title: '7. Updates and Maintenance',
-    paragraphs: ['Licensor may provide:'],
-    bullets: ['security updates', 'bug fixes', 'maintenance patches'],
   },
   {
     title: '8. Self-Hosted Environment Responsibility',
-    paragraphs: ['Licensee is solely responsible for all aspects of its hosting environment, including:'],
+      paragraphs: [
+        "Licensor is not responsible for failures, losses, or vulnerabilities arising from Licensee's infrastructure or configuration.",
+        'For self-hosted deployments, Licensee is solely responsible for all aspects of its hosting environment, including:',
+      ],
     bullets: [
       'server administration',
       'infrastructure security',
@@ -92,13 +102,17 @@ const sections: LegalSection[] = [
     title: '10. Disclaimer of Warranty',
     paragraphs: [
       'xsGrant is provided **"AS IS"** and **"AS AVAILABLE"**, without warranties of any kind, whether express, implied, statutory, or otherwise.',
+      'Any support provided is limited to next business day support and is available only for the latest version and the **second (2)** latest version of xsGrant.',
       'To the maximum extent permitted by law, Licensor disclaims all warranties, including:',
     ],
     bullets: ['merchantability', 'fitness for a particular purpose', 'non-infringement', 'uninterrupted availability', 'error-free operation'],
   },
   {
     title: '11. Limitation of Liability',
-    paragraphs: ['To the maximum extent permitted by applicable law, Licensor shall not be liable for:'],
+    paragraphs: [
+      'Licensor\'s total aggregate liability under this Agreement shall not exceed the amount paid by Licensee for xsGrant during the **twelve (12)** months preceding the event giving rise to liability.',
+      'To the maximum extent permitted by applicable law, Licensor shall not be liable for:',
+    ],
     bullets: [
       'indirect damages',
       'incidental damages',
@@ -114,8 +128,12 @@ const sections: LegalSection[] = [
   },
   {
     title: '12. Termination',
-    paragraphs: ['This Agreement terminates immediately upon breach by Licensee.', 'Upon termination, Licensee shall immediately:'],
-    bullets: ['cease all use of xsGrant', 'remove all installations', 'destroy all copies of software, source code, backups, and related materials'],
+    paragraphs: [
+      'This Agreement terminates immediately upon breach by Licensee.',
+      'Termination of this Agreement does not by itself terminate any separate Source Code license, which remains governed by its own terms.',
+      'Upon termination, Licensee shall immediately:',
+    ],
+    bullets: ['cease all use of xsGrant under this Agreement', 'remove all installed xsGrant instances governed by this Agreement', 'destroy all backups and related materials governed by this Agreement'],
   },
   {
     title: '13. Governing Law and Jurisdiction',
@@ -130,11 +148,14 @@ const sections: LegalSection[] = [
   },
   {
     title: '15. Entire Agreement',
-    paragraphs: ['This Agreement constitutes the complete and exclusive agreement between Licensor and Licensee concerning xsGrant and supersedes all prior proposals, discussions, understandings, or agreements relating to xsGrant.'],
+    paragraphs: [
+      'This Agreement constitutes the complete and exclusive agreement between Licensor and Licensee concerning the Commercial License for xsGrant and supersedes all prior proposals, discussions, understandings, or agreements relating to that Commercial License.',
+      'Any separate license accompanying Source Code, including the PolyForm Noncommercial License **1.0.0** where applicable, remains separate and is not superseded by this Agreement.',
+    ],
   },
   {
     title: '16. Contact',
-    paragraphs: ['Licensing inquiries: **[Insert Contact Email]**'],
+    paragraphs: ['Licensing inquiries: **info@xsgrant.com**'],
   },
 ];
 
@@ -165,8 +186,8 @@ export function TermsPage({ onNavigateHome, onNavigateSection }: TermsPageProps)
               <p className="text-sm font-semibold uppercase tracking-[0.28em] text-blue-100/90">Legal &amp; Licensing</p>
               <h1 className="mt-4 text-4xl font-extrabold tracking-tight sm:text-5xl">End-User License Agreement</h1>
               <p className="mt-4 text-lg leading-8 text-slate-200">
-                The same straightforward approach behind xsGrant carries into the legal terms: clear scope, one
-                production deployment, and transparent self-hosting responsibilities.
+                The same straightforward approach behind xsGrant carries into the legal terms: clear commercial scope,
+                licensed user-based access, separate source-code licensing, and transparent self-hosting responsibilities.
               </p>
             </div>
 
@@ -215,7 +236,7 @@ export function TermsPage({ onNavigateHome, onNavigateSection }: TermsPageProps)
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/8 px-4 py-4">
                 <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-100/75">Effective Date</p>
-                <p className="mt-2 text-lg font-semibold">[Insert Date]</p>
+                <p className="mt-2 text-lg font-semibold">23-03-2026</p>
               </div>
             </div>
           </div>
@@ -224,14 +245,15 @@ export function TermsPage({ onNavigateHome, onNavigateSection }: TermsPageProps)
             <div className="grid gap-4 lg:grid-cols-[1.35fr_0.65fr]">
               <div className="rounded-3xl border border-slate-200 bg-slate-50/80 px-6 py-6 text-slate-700 shadow-sm">
                 <p className="text-sm font-medium uppercase tracking-[0.24em] text-slate-500">Copyright Notice</p>
-                <p className="mt-3 text-base leading-7">Copyright &copy; [Year] iJam IT Solutions. All rights reserved.</p>
+                <p className="mt-3 text-base leading-7">Copyright &copy; {new Date().getFullYear()} iJam IT Solutions. All rights reserved.</p>
                 <p className="mt-4 text-base leading-7">
                   This End-User License Agreement ("Agreement") is a legal agreement between{' '}
                   <strong>iJam IT Solutions</strong> ("Licensor") and the individual or legal entity installing,
                   accessing, deploying, or using <strong>xsGrant</strong> ("Licensee").
                 </p>
                 <p className="mt-4 text-base leading-7">
-                  If Licensee does not agree to these terms, Licensee must not install or use xsGrant.
+                  If Licensee does not agree to these terms, Licensee receives no rights under this Agreement. Any
+                  separately licensed Source Code remains governed by its own accompanying license.
                 </p>
               </div>
 
@@ -239,13 +261,16 @@ export function TermsPage({ onNavigateHome, onNavigateSection }: TermsPageProps)
                 <p className="text-sm font-medium uppercase tracking-[0.24em] text-accent-500">At a glance</p>
                 <div className="mt-4 space-y-4 text-sm leading-7 sm:text-base">
                   <p>
-                    <strong>Deployment:</strong> one production instance per license.
+                    <strong>Deployment:</strong> unlimited instances within your licensed user count.
                   </p>
                   <p>
                     <strong>Use case:</strong> internal use only unless separately authorized.
                   </p>
                   <p>
                     <strong>Hosting:</strong> you operate and secure your own environment.
+                  </p>
+                  <p>
+                    <strong>Source code:</strong> separately licensed where provided, including under PolyForm Noncommercial.
                   </p>
                 </div>
               </div>
@@ -275,34 +300,21 @@ export function TermsPage({ onNavigateHome, onNavigateSection }: TermsPageProps)
                     </p>
                   )}
 
-                  {legalSection.title === '6. Ownership and Intellectual Property' && (
-                    <p className="mt-4 text-base leading-8 text-slate-700">No ownership rights are transferred under this Agreement.</p>
+                  {legalSection.title === '7. Updates and Maintenance' && (
+                    <p className="mt-4 text-base leading-8 text-slate-700">
+                      Licensor aims to provide <strong>three (3)</strong> releases per year. Security patches may be released separately
+                      as needed.
+                    </p>
                   )}
 
-                  {legalSection.title === '8. Self-Hosted Environment Responsibility' && (
-                    <p className="mt-4 text-base leading-8 text-slate-700">
-                      Licensor is not responsible for failures, losses, or vulnerabilities arising from Licensee&apos;s
-                      infrastructure or configuration.
-                    </p>
+                  {legalSection.title === '6. Ownership and Intellectual Property' && (
+                    <p className="mt-4 text-base leading-8 text-slate-700">No ownership rights are transferred under this Agreement.</p>
                   )}
 
                   {legalSection.title === '10. Disclaimer of Warranty' && (
                     <p className="mt-4 text-base leading-8 text-slate-700">
                       Licensor does not warrant that xsGrant will meet Licensee&apos;s requirements or operate without
                       interruption.
-                    </p>
-                  )}
-
-                  {legalSection.title === '11. Limitation of Liability' && (
-                    <p className="mt-4 text-base leading-8 text-slate-700">
-                      Licensor&apos;s total aggregate liability under this Agreement shall not exceed the amount paid by
-                      Licensee for xsGrant during the twelve (12) months preceding the event giving rise to liability.
-                    </p>
-                  )}
-
-                  {legalSection.title === '12. Termination' && (
-                    <p className="mt-4 text-base leading-8 text-slate-700">
-                      Termination does not limit Licensor&apos;s right to pursue legal remedies.
                     </p>
                   )}
 
@@ -316,6 +328,12 @@ export function TermsPage({ onNavigateHome, onNavigateSection }: TermsPageProps)
                       ))}
                     </ul>
                   )}
+
+                  {legalSection.title === '12. Termination' && (
+                    <p className="mt-4 text-base leading-8 text-slate-700">
+                      Termination does not limit Licensor&apos;s right to pursue legal remedies.
+                    </p>
+                  )}
                 </div>
               ))}
             </div>
@@ -323,8 +341,6 @@ export function TermsPage({ onNavigateHome, onNavigateSection }: TermsPageProps)
             <footer className="mt-8 rounded-3xl border border-slate-200 bg-slate-950 px-6 py-6 text-slate-200 shadow-sm sm:px-8">
               <p className="text-sm font-semibold uppercase tracking-[0.24em] text-slate-400">Licensor</p>
               <p className="mt-3 text-xl font-semibold text-white">iJam IT Solutions</p>
-              <p className="mt-3 text-base leading-7">[Insert Business Address]</p>
-              <p className="text-base leading-7">[Insert Country]</p>
             </footer>
           </div>
         </div>
