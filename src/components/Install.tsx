@@ -65,9 +65,10 @@ export function Install() {
                 Watch the product demo
               </div>
               <video
-                className="w-full rounded-xl border border-slate-200 bg-black"
+                className="aspect-video w-full rounded-xl border border-slate-200 bg-black object-cover"
                 controls
                 preload="metadata"
+                playsInline
               >
                 <source src="/demo.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
