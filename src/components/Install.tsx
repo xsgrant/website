@@ -106,7 +106,7 @@ export function Install() {
                     <Copy className="h-4 w-4" />
                   )}
                 </button>
-                <pre className="text-sm font-mono text-slate-800 overflow-x-auto whitespace-pre">
+                <pre className="text-sm font-mono text-slate-800 whitespace-pre-wrap break-all">
                   <code className="block mb-2">
                     <span className="text-slate-400">#</span>{" "}
                     <span className="text-slate-500">
