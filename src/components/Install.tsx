@@ -15,28 +15,29 @@ export function Install() {
   return (
     <div id="install" className="py-24 relative overflow-hidden bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 text-center">
+          <h2 className="text-sm font-semibold uppercase tracking-[0.24em] text-accent-500">
+            xsGrant hands-on
+          </h2>
+        </div>
+
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           <div className="mb-12 lg:mb-0">
-            <h2 className="text-sm font-semibold text-accent-500 uppercase tracking-[0.24em]">
-              Local Demo
-            </h2>
             <p className="mt-2 text-3xl font-extrabold text-slate-950 tracking-tight sm:text-4xl mb-6">
-              Experience the full feature set in 5 minutes.
+              Try xsGrant locally in minutes.
             </p>
             <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-              See for yourself how{" "}
-              <span className="font-semibold text-slate-800">xsGrant</span>{" "}
-              transforms privileged access. Watch a quick product walkthrough,
-              or spin up a local instance using Docker Compose to explore
-              request workflows, break-glass emergencies, and audit logs
-              hands-on.
+              Run <span className="font-semibold text-slate-800">xsGrant</span>
+              locally to evaluate the full workflow firsthand. It is a quick way
+              to test requests, approvals, emergency access, and audit trails in
+              your own environment without committing to a full rollout.
             </p>
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-4 text-slate-700 font-medium">
                 <div className="flex-shrink-0 w-8 h-8 rounded-xl bg-accent-50 border border-accent-100 flex items-center justify-center text-accent-500 font-bold shadow-sm">
                   1
                 </div>
-                <span>Download the configuration</span>
+                <span>Download the evaluation setup</span>
               </div>
               <div className="flex items-center gap-4 text-slate-700 font-medium">
                 <div className="flex-shrink-0 w-8 h-8 rounded-xl bg-accent-50 border border-accent-100 flex items-center justify-center text-accent-500 font-bold shadow-sm">
@@ -48,7 +49,7 @@ export function Install() {
                 <div className="flex-shrink-0 w-8 h-8 rounded-xl bg-accent-50 border border-accent-100 flex items-center justify-center text-accent-500 font-bold shadow-sm">
                   3
                 </div>
-                <span>Test workflows via localhost:8000</span>
+                <span>Review the request, approval, and audit flow</span>
               </div>
             </div>
           </div>
@@ -110,7 +111,7 @@ export function Install() {
                   <code className="block mb-2">
                     <span className="text-slate-400">#</span>{" "}
                     <span className="text-slate-500">
-                      Download the configuration
+                      Download the evaluation setup
                     </span>
                   </code>
                   <code className="block mb-4">

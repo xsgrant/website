@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { Scenarios } from './components/Scenarios';
 import { TrustSection } from './components/TrustSection';
 import { Features } from './components/Features';
 import { Install } from './components/Install';
@@ -71,6 +72,7 @@ function App() {
           <>
             <Hero />
             <TrustSection />
+            <Scenarios />
             <Features />
             <Install />
             <Pricing />
